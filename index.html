@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sewa Squad Verif MLBB</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(45deg, #ff3c00, #ffae00, #7b00ff, #ff3c00);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      opacity: 0.08;
+      z-index: -1;
+    }
+    
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: rgba(20, 20, 20, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 32px;
+      border-radius: 20px;
+      border: 1px solid #2a2a2a;
+      box-shadow: 0 8px 32px rgba(255, 60, 0, 0.15);
+      animation: fadeInUp 0.8s ease-out;
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #ff3c00, #ffae00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+    
+    h2 {
+      color: #ffae00;
+      font-size: 20px;
+      margin: 28px 0 14px 0;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #333;
+      position: relative;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 60px; height: 2px;
+      background: linear-gradient(90deg, #ff3c00, #ffae00);
+      animation: lineGrow 2s ease-in-out infinite;
+    }
+    
+    @keyframes lineGrow {
+      0%, 100% { width: 60px; }
+      50% { width: 120px; }
+    }
+    
+    .squad-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 10px;
+    }
+    
+    .squad-list li {
+      background: #1f1f1f;
+      padding: 14px 16px;
+      border-radius: 10px;
+      border-left: 3px solid #ff3c00;
+      transition: all 0.3s ease;
+      animation: slideIn 0.5s ease-out backwards;
+    }
+    
+    .squad-list li:nth-child(1) { animation-delay: 0.1s; }
+    .squad-list li:nth-child(2) { animation-delay: 0.2s; }
+    .squad-list li:nth-child(3) { animation-delay: 0.3s; }
+    .squad-list li:nth-child(4) { animation-delay: 0.4s; }
+    .squad-list li:nth-child(5) { animation-delay: 0.5s; }
+    .squad-list li:nth-child(6) { animation-delay: 0.6s; }
+    
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    .squad-list li:hover {
+      background: #2a2a2a;
+      transform: translateX(5px);
+      box-shadow: 0 4px 15px rgba(255, 60, 0, 0.3);
+    }
+    
+    .squad-list strong { color: #ffae00; font-weight: 600; }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+    
+    th, td { padding: 12px 16px; text-align: left; }
+    th { background: #252525; color: #ffae00; font-weight: 600; }
+    tr { background: #1a1a1a; border-bottom: 1px solid #2a2a2a; transition: background 0.3s ease; }
+    tr:hover { background: #252525; }
+    
+    .note { font-size: 13px; color: #888; margin-top: 8px; }
+    
+    .cta-text {
+      text-align: center;
+      margin-top: 32px;
+      margin-bottom: 16px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #00ff88;
+    }
+    
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .btn {
+      display: block;
+      text-align: center;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    
+    .wa-btn {
+      background: linear-gradient(90deg, #25D366, #128C7E);
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    }
+    
+    .wa-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+    }
+    
+    .fb-btn {
+      background: linear-gradient(90deg, #1877F2, #0d5cbf);
+      box-shadow: 0 4px 20px rgba(24, 119, 242, 0.4);
+      animation-delay: 0.3s;
+    }
+    
+    .fb-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 30px rgba(24, 119, 242, 0.6);
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>SEWA SQUAD VERIF MLBB 🔥</h1>
+    
+    <h2>Lineup Tersedia</h2>
+    <ul class="squad-list">
+      <li><strong>ONIC</strong> - ONIC ESPORTS</li>
+      <li><strong>ONIC</strong> - ONIC ESPORTS ID</li>
+      <li><strong>#1</strong> - Generation Z</li>
+      <li><strong>KOL</strong> - MLBB INFLUENCER</li>
+      <li><strong>969</strong> - ANOMALI 969</li>
+      <li><strong>EVOS</strong> - EVOS ESPORTS</li>
+    </ul>
+
+    <h2>💸 Harga Sewa Pertama</h2>
+    <table>
+      <tr><th>Durasi</th><th>Harga</th></tr>
+      <tr><td>3 Hari</td><td>Rp9.000</td></tr>
+      <tr><td>7 Hari</td><td>Rp15.000</td></tr>
+      <tr><td>15 Hari</td><td>Rp30.000</td></tr>
+      <tr><td>30 Hari</td><td>Rp45.000</td></tr>
+      <tr><td>90 Hari</td><td>Rp135.000</td></tr>
+      <tr><td>Permanent</td><td>Rp2.000.000*</td></tr>
+    </table>
+    <p class="note">*Permanent bisa dicicil maks 2 bulan lunas, DP 25%</p>
+
+    <h2>💸 Harga Perpanjang</h2>
+    <p class="note">Khusus yang masih di squad / durasi sewa masih ada</p>
+    <table>
+      <tr><th>Durasi</th><th>Harga</th></tr>
+      <tr><td>3 Hari</td><td>Rp8.000</td></tr>
+      <tr><td>7 Hari</td><td>Rp13.800</td></tr>
+      <tr><td>15 Hari</td><td>Rp26.500</td></tr>
+      <tr><td>30 Hari</td><td>Rp40.000</td></tr>
+      <tr><td>90 Hari</td><td>Rp120.000</td></tr>
+    </table>
+
+    <p class="cta-text">Masuk dulu baru bayar ✅</p>
+    <div class="btn-group">
+      <a href="https://wa.me/6281385647137?text=Halo%20min,%20mau%20order%20sewa%20squad%20MLBB%0A%0ASquad%20:%20%0ADurasi%20:%20%0AStatus%20:%20Sewa%20Baru/Perpanjang" class="btn wa-btn" target="_blank">
+        💬 Chat Admin WhatsApp
+      </a>
+      <a href="https://www.facebook.com/qitzu.yamata/" class="btn fb-btn" target="_blank">
+        📘 Hubungi via Facebook
+      </a>
+    </div>
+  </div>
+</body>
+</html>
